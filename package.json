@@ -1,27 +1,27 @@
 {
-  "name": "tecnopoint-tunnings",
+  "name": "tecnopoint-tunings",
 	"version": "1.0.0",
 	"api_version": "1.0.0",
-	"description": "tecnopoint-tunnings",
+	"description": "tecnopoint-tunings",
 	"keywords": [
 		"Protocol"
 	],
 	"manufacturer": "TecnoPoint",
-	"product": "TunningS",
-	"shortname": "TunninS",
- 	"homepage": "https://github.com/bitfocus/companion-module-tecnopoint-tunnings#readme",
+	"product": "TuningS",
+	"shortname": "TuninS",
+ 	"homepage": "https://github.com/bitfocus/companion-module-tecnopoint-tunings#readme",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-tecnopoint-tunnings.git"
+		"url": "git+https://github.com/bitfocus/companion-module-tecnopoint-tunings.git"
 	},
 	"author": "Jeffrey Davidsz <jeffrey.davidsz@vicreo.eu>", 
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/bitfocus/companion-module-tecnopoint-tunnings/issues"
+		"url": "https://github.com/bitfocus/companion-module-tecnopoint-tunings/issues"
 	}
 }
 
