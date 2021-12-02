@@ -101,6 +101,13 @@ instance.prototype.config_fields = function () {
 			default: 22222,
 			regex: self.REGEX_PORT,
 		},
+		{
+			type: 'dropdown',
+			id: 'id_end',
+			label: 'Command End Character:',
+			default: '\r\n',
+			choices: self.CHOICES_END,
+		},
 	]
 }
 
@@ -136,7 +143,7 @@ instance.prototype.actions = function (system) {
 
 	self.system.emit('instance_actions', self.id, {
 		send: {
-			label: 'Send Command',
+			label: 'Send Custom Command',
 			options: [
 				{
 					type: 'textinput',
@@ -146,27 +153,102 @@ instance.prototype.actions = function (system) {
 					default: '',
 					width: 6,
 				},
+			],
+		},
+		start: {
+			label: 'Start command',
+			options: [
 				{
-					type: 'dropdown',
-					id: 'id_end',
-					label: 'Command End Character:',
-					default: '\n',
-					choices: self.CHOICES_END,
+					type: 'textinput',
+					id: 'row',
+					label: 'Row',
+					default: 'A',
+					width: 6,
+				},
+				{
+					type: 'textinput',
+					id: 'column',
+					label: 'Column',
+					default: '1',
+					width: 6,
 				},
 			],
 		},
+		stop: {
+			label: 'Stop command',
+			options: [
+				{
+					type: 'textinput',
+					id: 'row',
+					label: 'Row',
+					default: 'A',
+					width: 6,
+				},
+				{
+					type: 'textinput',
+					id: 'column',
+					label: 'Column',
+					default: '1',
+					width: 6,
+				},
+			],
+		},
+		cut: {
+			label: 'Cut command',
+			options: [
+				{
+					type: 'textinput',
+					id: 'row',
+					label: 'Row',
+					default: 'A',
+					width: 6,
+				},
+				{
+					type: 'textinput',
+					id: 'column',
+					label: 'Column',
+					default: '1',
+					width: 6,
+				},
+			],
+		},
+		globalStart: { label: 'Global Start' },
+		globalStop: { label: 'Global Stop' },
+		globalCut: { label: 'Global Cut' },
+		globalStatusReply: { label: 'Get Global Status Reply' },
 	})
 }
 
 instance.prototype.action = function (action) {
 	var self = this
+	var options = actions.options
 	var cmd
-	var end
+	var end = self.config.id_end
 
 	switch (action.action) {
 		case 'send':
-			cmd = unescape(action.options.id_send)
-			end = action.options.id_end
+			cmd = unescape(options.id_send)
+			break
+		case 'start':
+			cmd = `START [${unescape(options.row)}${unescape(options.column)}]`
+			break
+		case 'stop':
+			cmd = `STOP [${unescape(options.row)}${unescape(options.column)}]`
+			break
+		case 'cut':
+			cmd = `CUT [${unescape(options.row)}${unescape(options.column)}]`
+			break
+		case 'globalStart':
+			cmd = 'GLOBSTART'
+			break
+		case 'globalStop':
+			cmd = 'GLOBSTOP'
+			break
+		case 'globalCut':
+			cmd = 'GLOBCUT'
+			break
+		case 'globalStatusReply':
+			cmd = 'GET_STA'
 			break
 	}
 
