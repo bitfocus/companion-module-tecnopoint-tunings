@@ -8,7 +8,7 @@
 	],
 	"manufacturer": "TecnoPoint",
 	"product": "TuningS",
-	"shortname": "TuninS",
+	"shortname": "TuningS",
  	"homepage": "https://github.com/bitfocus/companion-module-tecnopoint-tunings#readme",
 	"main": "index.js",
 	"scripts": {
