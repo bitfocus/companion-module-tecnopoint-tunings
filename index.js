@@ -221,7 +221,7 @@ instance.prototype.actions = function (system) {
 
 instance.prototype.action = function (action) {
 	var self = this
-	var options = actions.options
+	var options = action.options
 	var cmd
 	var end = self.config.id_end
 
